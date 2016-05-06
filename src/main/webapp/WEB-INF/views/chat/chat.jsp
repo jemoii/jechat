@@ -73,6 +73,9 @@
 	});
 	// 将无效的userId及时移除
 	window.onbeforeunload = function() {
+		window.unloadTimer = setInterval(
+				"dwrChat.onPageLoad(uid);clearInterval(window.unloadTimer);",
+				500);
 		dwrChat.onPageClose(uid);
 		return "";
 	};
