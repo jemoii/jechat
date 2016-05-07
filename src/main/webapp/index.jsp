@@ -57,7 +57,11 @@
 			</div>
 			<!-- /.col-sm-6 -->
 		</div>
-		<label>Power by VOLER.ME</label>
+		<label>Power by VOLER.ME<a class="github-button"
+			href="https://github.com/jemoii/jechat" data-style="mega"
+			aria-label="Watch jemoii/jechat on GitHub">Watch</a> <a
+			class="github-button" href="https://github.com/jemoii/jechat/fork"
+			data-style="mega" aria-label="Fork jemoii/jechat on GitHub">Fork</a></label>
 	</div>
 	<!-- /container -->
 
@@ -66,6 +70,8 @@
 <script src="./static/bootstrap/jquery.min.js"></script>
 <script src="./static/bootstrap/bootstrap.min.js"></script>
 <script src="./static/bootstrap/docs.min.js"></script>
+<!-- Github buttons -->
+<script async defer id="github-bjs" src="./static/github/buttons.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#username').focus();
