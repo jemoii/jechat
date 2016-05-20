@@ -6,13 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="SHORTCUT ICON" href="/static/photo/favicon.ico">
 <!-- Bootstrap core CSS -->
-<link href="../static/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="/static/bootstrap/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
-<link href="../static/bootstrap/bootstrap-theme.min.css"
-	rel="stylesheet">
+<link href="/static/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="../static/bootstrap/theme.css" rel="stylesheet">
+<link href="/static/bootstrap/theme.css" rel="stylesheet">
 <title>聊天界面...</title>
 </head>
 <body role="document">
@@ -60,9 +60,9 @@
 <!-- Bootstrap core JavaScript -->
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/interface/dwrChat.js'></script>
-<script src="../static/bootstrap/jquery.min.js"></script>
-<script src="../static/bootstrap/bootstrap.min.js"></script>
-<script src="../static/bootstrap/docs.min.js"></script>
+<script src="/static/bootstrap/jquery.min.js"></script>
+<script src="/static/bootstrap/bootstrap.min.js"></script>
+<script src="/static/bootstrap/docs.min.js"></script>
 <script type="text/javascript">
 	var uid = '${uid}';
 	$(function() {
