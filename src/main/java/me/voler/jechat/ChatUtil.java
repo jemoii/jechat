@@ -3,9 +3,9 @@ package me.voler.jechat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.WeakHashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -21,7 +21,8 @@ public class ChatUtil {
 
 	private static final Logger LOGGER = Logger.getLogger(ChatUtil.class);
 	/** 管理userId与ScriptSession的映射关系 */
-	private static Map<String, ScriptSession> USERID_SCRIPTSESSION = new ConcurrentHashMap<String, ScriptSession>();
+	private static WeakHashMap<String, ScriptSession> USERID_SCRIPTSESSION = new WeakHashMap<String, ScriptSession>(
+			new HashMap<String, ScriptSession>());
 
 	public void onPageLoad(String userId) {
 		if (StringUtils.isEmpty(userId)) {
