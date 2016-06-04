@@ -35,8 +35,9 @@ public class ChatUtil {
 		// ScriptSession与HttpSession类似
 		scriptSession.setAttribute("uid", userId);
 		USERID_SCRIPTSESSION.put(userId, scriptSession);
+		ChatIDTO idto = new ChatIDTO("系统", userId + "加入群聊...", "", 0);
 		sendDialogueMessage(Collections.<String> emptyList(),
-				new ChatODTO("系统", userId + "加入群聊...", USERID_SCRIPTSESSION.size()));
+				new ChatODTO(idto.getUserIdTag(), idto.getContentTag(), USERID_SCRIPTSESSION.size()));
 
 	}
 
@@ -48,20 +49,21 @@ public class ChatUtil {
 
 		// 支持一对一私聊
 		List<String> atList = new ArrayList<String>();
-		String content = idto.getContent();
+		String content = idto.getContentTag();
 		if (USERID_SCRIPTSESSION.keySet().contains(idto.getAt())) {
 			atList.add(idto.getUserId());
 			atList.add(idto.getAt());
-			content = content + "<label>@" + idto.getAt() + "</label>";
+			content = content + idto.getAtTag();
 		}
 
-		sendDialogueMessage(atList, new ChatODTO(idto.getUserId(), content, USERID_SCRIPTSESSION.size()));
+		sendDialogueMessage(atList, new ChatODTO(idto.getUserIdTag(), content, USERID_SCRIPTSESSION.size()));
 	}
 
 	public void onPageClose(String userId) {
 		USERID_SCRIPTSESSION.remove(userId);
+		ChatIDTO idto = new ChatIDTO("系统", userId + "退出群聊...", "", 0);
 		sendDialogueMessage(Collections.<String> emptyList(),
-				new ChatODTO("系统", userId + "退出群聊...", USERID_SCRIPTSESSION.size()));
+				new ChatODTO(idto.getUserIdTag(), idto.getContentTag(), USERID_SCRIPTSESSION.size()));
 	}
 
 	private void sendDialogueMessage(List<String> userIds, ChatODTO chatMessage) {

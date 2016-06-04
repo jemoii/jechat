@@ -6,86 +6,55 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="SHORTCUT ICON" href="/static/photo/favicon.ico">
+<link rel="shortcut icon" href="http://7u2pdv.com1.z0.glb.clouddn.com/favicon.ico">
 <!-- Bootstrap core CSS -->
-<link href="/static/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
-<link href="/static/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="/static/bootstrap/theme.css" rel="stylesheet">
+<link href="http://7u2pdv.com1.z0.glb.clouddn.com/example.theme.css" rel="stylesheet">
 <title>聊天首页...</title>
 </head>
 <body role="document">
-
 	<div class="container theme-showcase" role="main">
-		<div class="page-header">
-			<h3>聊天首页</h3>
-		</div>
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">聊天首页</h3>
+					</div>
 					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-12">
-								<table class="table">
-									<thead>
-										<tr>
-											<th><h4>
-													<span class="label label-default">昵称</span>
-												</h4></th>
-											<th><input type="text" class="form-control"
-												id="username"></th>
-											<th><button type="button" class="btn btn-info"
-													onclick="begin()">开始聊天</button></th>
-										</tr>
-									</thead>
-
-								</table>
-							</div>
-							<!-- /.col-sm-12 -->
-						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<ul class="list-group">
-									<li class="list-group-item">1、填写昵称后，点击“开始聊天”进入聊天界面，</li>
-									<li class="list-group-item">2、支持中文昵称，一对一私聊。</li>
-								</ul>
-							</div>
-							<!-- /.col-sm-12 -->
+						<div class="input-group col-md-8">
+							<label class="input-group-addon" for="username">昵称</label> <input
+								type="text" class="form-control" id="username"
+								data-toggle="popover" data-trigger="hover" data-placement="top"
+								data-html="true"
+								data-content="
+									1、填写昵称后，点击“开始聊天”进入聊天界面，</br>
+									2、支持中文昵称，一对一私聊，文字颜色个性化。">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-info" onclick="begin()">开始聊天</button>
+							</span>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- /.col-sm-6 -->
 		</div>
-		<label>Power by VOLER.ME<a class="github-button"
-			href="https://github.com/jemoii/jechat" data-style="mega"
-			aria-label="Watch jemoii/jechat on GitHub">Watch</a> <a
-			class="github-button" href="https://github.com/jemoii/jechat/fork"
-			data-style="mega" aria-label="Fork jemoii/jechat on GitHub">Fork</a></label>
 	</div>
 	<!-- /container -->
-
 </body>
 <!-- Bootstrap core JavaScript -->
-<script src="/static/bootstrap/jquery.min.js"></script>
-<script src="/static/bootstrap/bootstrap.min.js"></script>
-<script src="/static/bootstrap/docs.min.js"></script>
-<!-- Github buttons -->
-<script async defer id="github-bjs" src="/static/github/buttons.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$('#username').focus();
-	});
-	function begin() {
-		if ($('#username').val().trim() != "") {
-			location.href = "./user/" + $('#username').val().trim();
-		}
+$(function() {
+	$('[data-toggle="popover"]').popover()
+})
+function begin() {
+	if ($('#username').val().trim() != "") {
+		location.href = "./user/" + $('#username').val().trim();
 	}
-	$(document).keydown(function(event) {
-		if (event.keyCode == 13) {
-			begin();
-		}
-	})
+}
 </script>
 </html>
