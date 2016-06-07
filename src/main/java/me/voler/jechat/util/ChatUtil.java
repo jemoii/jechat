@@ -1,4 +1,4 @@
-package me.voler.jechat;
+package me.voler.jechat.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +16,9 @@ import org.directwebremoting.ScriptSessionFilter;
 import org.directwebremoting.WebContextFactory;
 
 import com.alibaba.fastjson.JSON;
+
+import me.voler.jechat.ChatIDTO;
+import me.voler.jechat.ChatODTO;
 
 public class ChatUtil {
 
@@ -37,7 +40,7 @@ public class ChatUtil {
 		USERID_SCRIPTSESSION.put(userId, scriptSession);
 		ChatIDTO idto = new ChatIDTO("系统", userId + "加入群聊...", "", 0);
 		sendDialogueMessage(Collections.<String> emptyList(),
-				new ChatODTO(idto.getUserIdTag(), idto.getContentTag(), USERID_SCRIPTSESSION.size()));
+				new ChatODTO(idto.getUserId(), idto.getContent(), idto.getColorId(), USERID_SCRIPTSESSION.size()));
 
 	}
 
@@ -49,21 +52,22 @@ public class ChatUtil {
 
 		// 支持一对一私聊
 		List<String> atList = new ArrayList<String>();
-		String content = idto.getContentTag();
+		String content = idto.getContent();
 		if (USERID_SCRIPTSESSION.keySet().contains(idto.getAt())) {
 			atList.add(idto.getUserId());
 			atList.add(idto.getAt());
 			content = content + idto.getAtTag();
 		}
 
-		sendDialogueMessage(atList, new ChatODTO(idto.getUserIdTag(), content, USERID_SCRIPTSESSION.size()));
+		sendDialogueMessage(atList,
+				new ChatODTO(idto.getUserId(), content, idto.getColorId(), USERID_SCRIPTSESSION.size()));
 	}
 
 	public void onPageClose(String userId) {
 		USERID_SCRIPTSESSION.remove(userId);
 		ChatIDTO idto = new ChatIDTO("系统", userId + "退出群聊...", "", 0);
 		sendDialogueMessage(Collections.<String> emptyList(),
-				new ChatODTO(idto.getUserIdTag(), idto.getContentTag(), USERID_SCRIPTSESSION.size()));
+				new ChatODTO(idto.getUserId(), idto.getContent(), idto.getColorId(), USERID_SCRIPTSESSION.size()));
 	}
 
 	private void sendDialogueMessage(List<String> userIds, ChatODTO chatMessage) {

@@ -31,7 +31,7 @@
 		</property>
 	</bean>
 
-	<bean id="chatUtil" class="me.voler.jechat.ChatUtil">
+	<bean id="chatUtil" class="me.voler.jechat.util.ChatUtil">
 		<dwr:remote javascript="dwrChat">
 			<dwr:include method="onPageLoad" />
 			<dwr:include method="onSendMessage" />

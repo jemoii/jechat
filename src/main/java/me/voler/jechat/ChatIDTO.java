@@ -2,6 +2,8 @@ package me.voler.jechat;
 
 import java.io.Serializable;
 
+import me.voler.jechat.util.ContentUtil;
+
 public class ChatIDTO implements Serializable {
 
 	private static final long serialVersionUID = -7226321550364580634L;
@@ -27,6 +29,7 @@ public class ChatIDTO implements Serializable {
 		return userId;
 	}
 
+	@Deprecated
 	public String getUserIdTag() {
 		String userIdStyle = "display: inline-block; width: 18%; color:" + COLOR_STYLE[colorId];
 		return "<label style='" + userIdStyle + "'>" + userId + "</label>";
@@ -37,12 +40,13 @@ public class ChatIDTO implements Serializable {
 	}
 
 	public String getContent() {
-		return content;
+		return ContentUtil.convert(content);
 	}
 
+	@Deprecated
 	public String getContentTag() {
 		String contentStyle = "color:" + COLOR_STYLE[colorId];
-		return "<span style='" + contentStyle + "'>" + content + "</span>";
+		return "<span style='" + contentStyle + "'>" + ContentUtil.convert(content) + "</span>";
 	}
 
 	public void setContent(String content) {
