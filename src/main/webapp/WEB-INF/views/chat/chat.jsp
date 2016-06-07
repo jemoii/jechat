@@ -31,24 +31,26 @@ html {
 <body role="document">
 	<div class="container" role="main">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-6">
 				<div class="panel panel-info">
 					<div class="panel-heading navbar-fixed-top">
 						欢迎<strong>${uid}</strong>... 当前<strong><span id="size">_</span></strong>人在线
+						<button type="button" class="btn btn-default navbar-right"
+							onclick="saveLog($('#message_panel').text())">保存聊天记录</button>
 					</div>
-					<div class="panel-body" style="height: 500px; overflow-y: scroll"
+					<div class="panel-body" style="height: 425px; overflow-y: scroll"
 						id="message_panel"></div>
 				</div>
 			</div>
-			<!-- /.col-sm-4 -->
+			<!-- /.col-sm-6 -->
 		</div>
 		<div class="row">
-			<div class="col-md-4" style="position: fixed; bottom: 0;">
-				<div class="input-group">
+			<div class="col-md-6">
+				<div class="input-group col-md-8">
 					<div class="input-group-btn dropup">
 						<button type="button" class="btn btn-default dropdown-toggle"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							😊</button>
+							^_^</button>
 						<ul class="dropdown-menu">
 							<li><span class="eq mp0 nj49" data-emoji="😀"
 								onclick="useEmoji(this)"></span> <span class="eq mp0 nj4"
@@ -86,7 +88,7 @@ html {
 					<!-- /btn-group -->
 					<input type="text" class="form-control" id="msg" />
 				</div>
-				<div class="input-group">
+				<div class="input-group col-md-8">
 					<label class="input-group-addon" for="at">@</label> <input
 						type="text" class="form-control" id="at"
 						placeholder="私聊时在此处填写对方昵称"><span class="input-group-btn">
@@ -94,7 +96,7 @@ html {
 					</span>
 				</div>
 			</div>
-			<!-- /.col-sm-4 -->
+			<!-- /.col-sm-6 -->
 		</div>
 	</div>
 	<!-- /container -->
@@ -145,6 +147,21 @@ function sendMsg() {
 //使用Emoji
 function useEmoji(obj) {
 	$('#msg').val($('#msg').val() + obj.getAttribute('data-emoji'));
+}
+function saveLog(content) {
+	if (!window.localStorage) {
+		alert('当前使用的浏览器不支持保存聊天记录！');
+		return;
+	}
+	if (confirm("保存操作会临时清除当前界面上的记录，确认保存？")) {
+		var storage = window.localStorage;
+		if (storage.getItem("jechat_" + uid)) {
+			content = storage.getItem("jechat_" + uid) + content;
+		}
+		storage.setItem("jechat_" + uid, content);
+		$('#message_panel').html('');
+		console.log(storage.getItem("jechat_" + uid));
+	}
 }
 $(document).keydown(function(event) {
 	if (event.keyCode == 13) {

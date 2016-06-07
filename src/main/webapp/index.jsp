@@ -13,7 +13,6 @@
 <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="http://7u2pdv.com1.z0.glb.clouddn.com/example.theme.css" rel="stylesheet">
-<link href="http://7u2pdv.com1.z0.glb.clouddn.com/twit2231_retina.min.css" rel="stylesheet">
 <title>聊天首页...</title>
 </head>
 <body role="document">
