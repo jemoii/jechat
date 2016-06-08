@@ -35,7 +35,7 @@
 		<dwr:remote javascript="dwrChat">
 			<dwr:include method="onPageLoad" />
 			<dwr:include method="onSendMessage" />
-			<dwr:include method="onPageClose" />
+			<!-- <dwr:include method="onPageClose" /> -->
 		</dwr:remote>
 	</bean>
 

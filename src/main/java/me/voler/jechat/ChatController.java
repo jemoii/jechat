@@ -1,5 +1,7 @@
 package me.voler.jechat;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ChatController {
 
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
-	public ModelAndView exec(@PathVariable("userId") String userId) {
+	public ModelAndView exec(@PathVariable("userId") String userId, HttpSession httpSession) {
+		httpSession.setAttribute("uid", userId);
 		ModelAndView mv = new ModelAndView("chat/chat");
 		mv.addObject("uid", userId);
 		return mv;
