@@ -80,11 +80,11 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>catalina</artifactId>
-			<version>6.0.44</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.apache.tomcat</groupId>-->
+			<!--<artifactId>catalina</artifactId>-->
+			<!--<version>6.0.44</version>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>commons-lang</groupId>

@@ -1,48 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd 
-    	http://www.springframework.org/schema/context  
-    	http://www.springframework.org/schema/context/spring-context.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
     	http://www.directwebremoting.org/schema/spring-dwr
     	http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 
-	<dwr:controller id="dwrController" debug="true">
-		<dwr:config-param name="activeReverseAjaxEnabled"
-			value="true" />
-		<dwr:config-param name="maxWaitAfterWrite" value="1000" />
-		<dwr:config-param name="crossDomainSessionSecurity"
-			value="false" />
-		<dwr:config-param name="allowScriptTagRemoting"
-			value="true" />
-	</dwr:controller>
+    <dwr:controller id="dwrController" debug="true">
+        <dwr:config-param name="activeReverseAjaxEnabled"
+                          value="true"/>
+        <dwr:config-param name="maxWaitAfterWrite" value="1000"/>
+        <dwr:config-param name="crossDomainSessionSecurity"
+                          value="false"/>
+        <dwr:config-param name="allowScriptTagRemoting"
+                          value="true"/>
+    </dwr:controller>
 
-	<bean
-		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
 
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="alwaysUseFullPath" value="true" />
-		<property name="mappings">
-			<props>
-				<prop key="/dwr/**/*">dwrController</prop>
-			</props>
-		</property>
-	</bean>
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="alwaysUseFullPath" value="true"/>
+        <property name="mappings">
+            <props>
+                <prop key="/dwr/**/*">dwrController</prop>
+            </props>
+        </property>
+    </bean>
 
-	<bean id="chatUtil" class="me.voler.jechat.util.ChatUtil">
-		<dwr:remote javascript="dwrChat">
-			<dwr:include method="onPageLoad" />
-			<dwr:include method="onSendMessage" />
-			<!-- <dwr:include method="onPageClose" /> -->
-		</dwr:remote>
-	</bean>
+    <bean id="chatUtil" class="me.voler.jechat.util.ChatUtil">
+        <dwr:remote javascript="dwrChat">
+            <dwr:include method="onPageLoad"/>
+            <dwr:include method="onPageClose"/>
+            <dwr:include method="onSendMessage"/>
+        </dwr:remote>
+    </bean>
 
-	<bean id="chatIDTO" class="me.voler.jechat.ChatIDTO">
-		<dwr:remote>
-			<dwr:convert type="bean" class="me.voler.jechat.ChatIDTO" />
-		</dwr:remote>
-	</bean>
+    <bean id="messageDto" class="me.voler.jechat.dto.MessageDto">
+        <dwr:remote>
+            <dwr:convert type="bean" class="me.voler.jechat.dto.MessageDto"/>
+        </dwr:remote>
+    </bean>
 
 </beans>
