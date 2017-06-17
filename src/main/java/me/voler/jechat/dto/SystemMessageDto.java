@@ -1,7 +1,5 @@
 package me.voler.jechat.dto;
 
-import me.voler.jechat.dto.MessageDto;
-
 import java.util.List;
 
 /**

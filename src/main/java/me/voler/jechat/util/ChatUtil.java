@@ -72,6 +72,7 @@ public class ChatUtil {
             return;
         }
 
+        MessageUtil.clean(dto);
         // 支持一对一私聊
         MessageUtil.parse(dto);
 
@@ -102,7 +103,7 @@ public class ChatUtil {
                     return false;
                 } else {
                     String uid = (String) session.getAttribute("uid");
-                    return CollectionUtils.isEmpty(uids) || uids.contains(uid);
+                    return USERID_SCRIPTSESSION.containsKey(uid) && (CollectionUtils.isEmpty(uids) || uids.contains(uid));
                 }
             }
         }, new Runnable() {

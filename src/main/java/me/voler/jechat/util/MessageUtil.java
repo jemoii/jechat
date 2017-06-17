@@ -1,6 +1,8 @@
 package me.voler.jechat.util;
 
 import me.voler.jechat.dto.MessageDto;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.regex.Pattern;
  */
 public class MessageUtil {
 
-    private static final Pattern pattern = Pattern.compile("(&@[^&@]+&)");
+    private static final Pattern pattern = Pattern.compile("(>@[^&@]+<)");
 
     public static void parse(MessageDto dto) {
         dto.setAtIds(new ArrayList<String>());
@@ -27,6 +29,13 @@ public class MessageUtil {
         if (!CollectionUtils.isEmpty(dto.getAtIds())) {
             dto.getAtIds().add(dto.getUserId());
         }
+    }
+
+    public static void clean(MessageDto dto) {
+        dto.setContent(Jsoup.clean(dto.getContent(), new Whitelist()
+                .addTags("span", "a")
+                .addAttributes("span", "data-before", "data-class")
+                .addAttributes("a", "data-before")));
     }
 
 }
