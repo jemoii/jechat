@@ -1,6 +1,7 @@
 package me.voler.jechat.util;
 
 import me.voler.jechat.dto.MessageDto;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 import org.springframework.util.CollectionUtils;
@@ -29,6 +30,8 @@ public class MessageUtil {
         if (!CollectionUtils.isEmpty(dto.getAtIds())) {
             dto.getAtIds().add(dto.getUserId());
         }
+
+        System.out.println(StringEscapeUtils.escapeJava(dto.getContent()));
     }
 
     public static void clean(MessageDto dto) {
